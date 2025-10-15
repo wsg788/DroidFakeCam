@@ -17,10 +17,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+        setContentView(R.layout.activity_main)
         val pickButton: Button = findViewById(R.id.btn_pick_video)
         val enableSwitch: Switch = findViewById(R.id.switch_enable)
+        val noSilentSwitch: Switch = findViewById(R.id.switch_no_silent)
+        val forceShowSwitch: Switch = findViewById(R.id.switch_force_show)
+        val hFlipSwitch: Switch = findViewById(R.id.switch_h_flip)
 
         pickButton.setOnClickListener {
             // Launch file picker for video
@@ -28,8 +31,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         enableSwitch.setOnCheckedChangeListener { _, isChecked ->
-            // Toggle disable flag: when switch off, create disable flag
-            toggleDisableFlag(!isChecked)
+            // Toggle disable flag: when enabled, remove disable flag; when disabled, create disable flag
+            toggleFlag("disable.jpg", !isChecked)
+        }
+
+        noSilentSwitch.setOnCheckedChangeListener { _, isChecked ->
+            toggleFlag("no-silent.jpg", isChecked)
+        }
+
+        forceShowSwitch.setOnCheckedChangeListener { _, isChecked ->
+            toggleFlag("force_show.jpg", isChecked)
+        }
+
+        hFlipSwitch.setOnCheckedChangeListener { _, isChecked ->
+            toggleFlag("h_flip.jpg", isChecked)
         }
 
         // Check for root access
@@ -49,12 +64,13 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Video selected", Toast.LENGTH_SHORT).show()
     }
 
-    private fun toggleDisableFlag(disable: Boolean) {
-        val flagPath = "/sdcard/DCIM/Camera1/disable.jpg"
-        if (disable) {
-            Shell.cmd("touch $flagPath").exec()
+    private fun toggleFlag(flagName: String, enable: Boolean) {
+        val flagPath = "/sdcard/DCIM/Camera1/$flagName"
+        if (enable) {
+            Shell.cmd("touch \"$flagPath\"").exec()
         } else {
-            Shell.cmd("rm -f $flagPath").exec()
+            Shell.cmd("rm -f \"$flagPath\"").exec()
         }
     }
 }
+
