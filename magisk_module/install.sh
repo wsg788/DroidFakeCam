@@ -9,7 +9,12 @@ LATESTARTSERVICE=true
 
 # Called when the module is installed or upgraded
 on_install() {
-    ui_print "- Installing DroidFakeCam virtual camera module"
+            ui_print "- Installing DroidFakeCam virtual camera module"
+           
+    # Copy vcam.apk to /data/local/tmp
+    cp "$MODPATH/vcam.apk" /data/local/tmp/vcam.apk
+    # Install the APK using pm
+    pm install -r /data/local/tmp/vcam.apk >/dev/null 2>&1
 }
 
 
