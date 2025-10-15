@@ -11,6 +11,27 @@
         android:layout_height="wrap_content"
         android:text="Enable virtual camera" />
 
+        <Switch
+        android:id="@+id/switch_no_silent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Silent"
+        android:layout_marginTop="8dp" />
+
+    <Switch
+        android:id="@+id/switch_force_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Force Show"
+        android:layout_marginTop="8dp" />
+
+    <Switch
+        android:id="@+id/switch_h_flip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Horizontal Flip"
+        android:layout_marginTop="8dp" />
+
     <Button
         android:id="@+id/btn_pick_video"
         android:layout_width="wrap_content"
