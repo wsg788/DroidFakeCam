@@ -1,7 +1,6 @@
 #!/system/bin/sh
 # Magisk module installation script for DroidFakeCam virtual camera
-# This script copies the vcam.apk (LSPosed module) into the LSPosed modules directory.
-
+# This script provides the vcam.apk for manual installation and does not rely on LSPosed.
 # Variables provided by Magisk
 SKIPMOUNT=false
 PROPFILE=false
@@ -10,14 +9,10 @@ LATESTARTSERVICE=true
 
 # Called when the module is installed or upgraded
 on_install() {
-  ui_print "- Installing DroidFakeCam virtual camera LSPosed module"
-
-  # Copy the embedded APK to LSPosed modules directory
-  # Attempt typical locations; adjust paths based on device environment
-  cp "$MODPATH/vcam.apk" "/data/adb/lspd/modules/droidfakecam-vcam.apk" 2>/dev/null
-  cp "$MODPATH/vcam.apk" "/data/adb/modules_update/droidfakecam-vcam/droidfakecam-vcam.apk" 2>/dev/null
-  cp "$MODPATH/vcam.apk" "/data/adb/modules/droidfakecam-vcam/droidfakecam-vcam.apk" 2>/dev/null
+    ui_print "- Installing DroidFakeCam virtual camera module"
 }
+
+
 
 # Set permissions on installed files
 set_permissions() {
