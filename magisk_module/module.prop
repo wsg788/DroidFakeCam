@@ -1,0 +1,6 @@
+id=droidfakecam-vcam
+name=DroidFakeCam Virtual Camera Module
+version=1.0.0
+versionCode=1
+author=DroidFakeCam
+description=Installs the virtual camera APK (vcam.apk) for the DroidFakeCam research project.
