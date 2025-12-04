@@ -1,0 +1,6 @@
+id=droidfakecam
+author=DroidFakeCam Team
+name=DroidFakeCam vcam bridge
+version=1.0.0
+versionCode=1
+description=Routes the system camera service through vcam using a Magisk daemon instead of LSPosed. Requires existing vcam binary.
